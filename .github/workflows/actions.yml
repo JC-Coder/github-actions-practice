@@ -1,16 +1,31 @@
 name: Actions Workflow
 
 on:
-  repository_dispatch:
-    types: [build]
+  push:
+    branches:
+      - master
+    #   - 'feature/*' # matches feature/featA , feature/featB, won't match feature/feat/a
+    #   - 'feature/**' # matches all string including the feature/feat/a
+    #   - '!feature/featC' # ignore branch
+    # tags:
+    #   - v1
+    #   - v1.*
+    # paths:
+    #   - '**.js'
+    #   - '!filename.js'
+    # paths-ignore:
+    #   - 'docs/**'
+
+  #   repository_dispatch:
+  #     types: [build]
   #   schedule:
   #     - cron: '0/5 * * * *'
   #     - cron: '0/6 * * * *'
   #   push:
-  pull_request:
-    types: [closed, assigned, opened, reopened]
-  issues:
-    types: [opened]
+  #   pull_request:
+  #     types: [closed, assigned, opened, reopened]
+  #   issues:
+  #     types: [opened]
 
 jobs:
   run-github-actions:
