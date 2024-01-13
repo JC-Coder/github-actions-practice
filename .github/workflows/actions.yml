@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - main
     #   - 'feature/*' # matches feature/featA , feature/featB, won't match feature/feat/a
     #   - 'feature/**' # matches all string including the feature/feat/a
     #   - '!feature/featC' # ignore branch
