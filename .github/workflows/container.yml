@@ -7,24 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     services:
       app:
-        image: jccoder/nodejs-app-image-1
+        image: alialaa17/node-api
         ports:
           - 3001:3000
       mongo:
         image: mongo
         ports:
-          - "27017:27017"
+          - '27017:27017'
     steps:
-      - name: Set up QEMU
-        run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-
-      - name: Pull Docker image for AMD64 platform
+      - name: Docker Commands
         run: |
-          docker buildx create --use
-          docker pull --platform linux/amd64 jccoder/nodejs-app-image-1
-
+          docker ps
+          docker volume ls
       - name: Post a user
-        run: "curl -X POST http://localhost:3001/api/user -H 'Content-Type: application/json' -D '{\"username\": \"user1\",\"address\": \"addr1\"}'"
-
+        run: 'curl -X POST http://localhost:3001/api/user -H ''Content-Type: application/json'' -d ''{"username": "user1","address": "addr1"}'''
       - name: Get Users
-        run: "curl http://localhost:3001/api/users"
+        run: 'curl http://localhost:3001/api/users'
