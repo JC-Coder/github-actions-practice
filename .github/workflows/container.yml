@@ -21,12 +21,5 @@ jobs:
            docker volume ls
         - name: Post a user
           run: "curl -X POST http://localhost:3001/api/user -H 'Content-Type: application/json' -D '{\"username\": \"user1\",\"address\": \"addr1\"}'"
-        - name: Post a user if fail
-          if: failure()
-          run: "curl -X POST http://localhost:3000/api/user -H 'Content-Type: application/json' -D '{\"username\": \"user1\",\"address\": \"addr1\"}'"
         - name: Get Users
-          if: always()
           run: "curl http://localhost:3001/api/users"
-        - name: Get Users always
-          if: always()
-          run: "curl http://localhost:3000/api/users"
