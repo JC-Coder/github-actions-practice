@@ -1,4 +1,4 @@
-name: Matrix
+ name: Matrix
 
 on: push
 
@@ -8,20 +8,9 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         node_version: [6, 8, 10]
-        include:
-          - os: ubuntu-latest
-            node_version: 8
-            is_ubuntu_8: 'true'
-        exclude:
-          - os: ubuntu-latest
-            node_version: 6
-          - os: macos-latest
-            node_version: 8
     #   max-parallel: 0
     #   fail-fast: true
     runs-on: ${{ matrix.os }}
-    env:
-      IS_UBUNTU_8: ${{ matrix.is_ubuntu_8 }}
     steps:
       - name: Log node version
         run: node -v
@@ -29,6 +18,4 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: Log node version
-        run: |
-          node -v
-          echo $IS_UBUNTU_8
+        run: node -v
