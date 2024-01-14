@@ -15,6 +15,10 @@ jobs:
         ports:
           - "27017:27017"
     steps:
+        - name: Docker Commands
+          run: |
+           docker ps
+           docker volume ls
         - name: Post a user
           run: "curl -X POST http://localhost:3001/api/user -H 'Content-Type: application/json' -D '{\"username\": \"user1\",\"address\": \"addr1\"}'"
         - name: Post a user if fail
