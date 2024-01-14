@@ -1,0 +1,12 @@
+name: Nested Workflow
+
+on: push
+
+jobs:
+  sample-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log Dir
+        run: |
+          pwd
+          ls -a
